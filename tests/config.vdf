@@ -1,0 +1,128 @@
+"InstallConfigStore"
+{
+	"Software"
+	{
+		"Valve"
+		{
+			"Steam"
+			{
+				"AutoUpdateWindowEnabled"		"0"
+				"ipv6check_http_state"		"good"
+				"ipv6check_udp_state"		"good"
+				"CompatToolMapping"
+				{
+					"0"
+					{
+						"name"		"proton_experimental"
+						"config"		""
+						"priority"		"75"
+					}
+					"509980"
+					{
+						"name"		"proton_63"
+						"config"		""
+						"priority"		"250"
+					}
+					"1549970"
+					{
+						"name"		"proton_63"
+						"config"		""
+						"priority"		"250"
+					}
+					"813780"
+					{
+						"name"		"GE-Proton7-37"
+						"config"		""
+						"priority"		"250"
+					}
+					"335300"
+					{
+						"name"		"Proton-stl"
+						"config"		""
+						"priority"		"250"
+					}
+					"4186750328"
+					{
+						"name"		"proton_experimental"
+						"config"		""
+						"priority"		"250"
+					}
+					"548430"
+					{
+						"name"		"proton_experimental"
+						"config"		""
+						"priority"		"250"
+					}
+					"409710"
+					{
+						"name"		"GE-Proton7-37"
+						"config"		""
+						"priority"		"250"
+					}
+					"409720"
+					{
+						"name"		"GE-Proton7-37"
+						"config"		""
+						"priority"		"250"
+					}
+					"739630"
+					{
+						"name"		"GE-Proton8-25"
+						"config"		""
+						"priority"		"250"
+					}
+					"1304930"
+					{
+						"name"		"proton_experimental"
+						"config"		""
+						"priority"		"250"
+					}
+					"3814317429"
+					{
+						"name"		"proton_8"
+						"config"		""
+						"priority"		"250"
+					}
+					"1086940"
+					{
+						"name"		"proton_hotfix"
+						"config"		""
+						"priority"		"250"
+					}
+					"730"
+					{
+						"name"		"SteamLinuxRuntime_sniper"
+						"config"		""
+						"priority"		"85"
+					}
+					"594650"
+					{
+						"name"		"Proton-GE"
+						"config"		""
+						"priority"		"250"
+					}
+					"1144200"
+					{
+						"name"		"GE-Proton8-25"
+						"config"		""
+						"priority"		"250"
+					}
+					"2073850"
+					{
+						"name"		"proton_experimental"
+						"config"		""
+						"priority"		"250"
+					}
+					"881100"
+					{
+						"name"		"Proton-GE"
+						"config"		""
+						"priority"		"250"
+					}
+				}
+				"RecentDownloadRate"		"1004281"
+				"LastConfigstoreUploadTime"		"1712429641"
+			}
+		}
+	}
+}
