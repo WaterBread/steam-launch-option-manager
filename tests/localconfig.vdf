@@ -1,0 +1,44 @@
+"UserLocalConfigStore"
+{
+	"Software"
+	{
+		"Valve"
+		{
+			"Steam"
+			{
+				"apps"
+				{
+					"630"
+					{
+						"LastPlayed"		"1405380832"
+						"Playtime"		"176"
+					}
+					"730"
+					{
+						"LastPlayed"		"1700333754"
+						"Playtime"		"79098"
+						"cloud"
+						{
+							"last_sync_state"		"synchronized"
+						}
+						"autocloud"
+						{
+							"lastlaunch"		"1700332803"
+							"lastexit"		"1700333754"
+						}
+						"BadgeData"		"0a000000082d1206080510011800"
+						"DisableUpdatesUntil"		"0"
+						"Playtime2wks"		"155"
+						"LaunchOptions"		"gamemoderun mangohud %command% -vulkan -novid -nojoy"
+						"PlaytimeDisconnected"		"14"
+					}
+					"745"
+					{
+						"LastPlayed"		"1347260400"
+						"Playtime"		"4"
+					}
+				}
+			}
+		}
+	}
+}

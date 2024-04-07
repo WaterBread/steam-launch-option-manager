@@ -8,3 +8,12 @@ edition = "2021"
 [dependencies]
 keyvalues-serde = "0.1.0"
 serde = { version = "1.0.0", features = ["derive"] }
+eframe = { version = "0.27.2", features = [ "default", "__screenshot" ] }
+parser = { path = "./parser" }
+config_file_reader = { path = "./config_file_reader" }
+
+[workspace]
+members = [
+    "parser",
+    "config_file_reader"
+]
