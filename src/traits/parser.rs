@@ -12,8 +12,7 @@ pub enum ParseError {
 }
 
 pub trait Parser {
-    fn get_game_runners(&self, vdf_string: &str)
-        -> Result<HashMap<String, GameConfig>, ParseError>;
+    fn get_game_runners(&self) -> Result<HashMap<String, GameConfig>, ParseError>;
     fn set_game_runners(
         &mut self,
         runners: HashMap<String, GameConfig>,
