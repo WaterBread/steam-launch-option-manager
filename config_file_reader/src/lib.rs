@@ -12,12 +12,12 @@ pub fn read_config_file(path: &Path) -> Result<String, FileError> {
     let file = std::fs::read_to_string(path);
 
     match file {
-        Ok(file) => Ok(file),
+        Ok(file) => Ok(file.to_owned()),
         Err(e) => Err(FileError::Io(e)),
     }
 }
 
-pub fn save_config_file(path: &Path, content: &str) -> Result<(), FileError> {
+pub fn save_config_file(path: &Path, content: String) -> Result<(), FileError> {
     let file = std::fs::write(path, content);
 
     match file {

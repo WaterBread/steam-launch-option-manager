@@ -9,11 +9,10 @@ edition = "2021"
 keyvalues-serde = "0.1.0"
 serde = { version = "1.0.0", features = ["derive"] }
 eframe = { version = "0.27.2", features = [ "default", "__screenshot" ] }
-parser = { path = "./parser" }
-config_file_reader = { path = "./config_file_reader" }
+thiserror = "1.0"
+keyvalues-parser = "0.2.0"
 
 [workspace]
 members = [
-    "parser",
     "config_file_reader"
 ]

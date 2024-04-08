@@ -1,0 +1,91 @@
+"InstallConfigStore"
+{
+	"Software"
+	{
+		"Valve"
+		{
+			"Steam"
+			{
+				"CompatToolMapping"
+				{
+					"0"
+					{
+						"name"	"proton_experimental"
+					}
+					"1086940"
+					{
+						"name"	"proton_hotfix"
+					}
+					"1144200"
+					{
+						"name"	"GE-Proton8-25"
+					}
+					"1304930"
+					{
+						"name"	"proton_experimental"
+					}
+					"1549970"
+					{
+						"name"	"proton_63"
+					}
+					"20510"
+					{
+						"name"	"luxtorpeda"
+					}
+					"2073850"
+					{
+						"name"	"proton_experimental"
+					}
+					"335300"
+					{
+						"name"	"Proton-stl"
+					}
+					"3814317429"
+					{
+						"name"	"proton_8"
+					}
+					"409710"
+					{
+						"name"	"GE-Proton7-37"
+					}
+					"409720"
+					{
+						"name"	"GE-Proton7-37"
+					}
+					"4186750328"
+					{
+						"name"	"proton_experimental"
+					}
+					"509980"
+					{
+						"name"	"proton_63"
+					}
+					"548430"
+					{
+						"name"	"proton_experimental"
+					}
+					"594650"
+					{
+						"name"	"Proton-GE"
+					}
+					"730"
+					{
+						"name"	"SteamLinuxRuntime_sniper"
+					}
+					"739630"
+					{
+						"name"	"GE-Proton8-25"
+					}
+					"813780"
+					{
+						"name"	"GE-Proton7-37"
+					}
+					"881100"
+					{
+						"name"	"Proton-GE"
+					}
+				}
+			}
+		}
+	}
+}

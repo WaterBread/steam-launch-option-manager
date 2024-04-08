@@ -686,12 +686,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "collapse"
-version = "0.1.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ba28d63cd46c3b6dc8d75b63f563b724dc9c5e09c59cf5b62f315a7ddfcc135a"
-
-[[package]]
 name = "color_quant"
 version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1596,12 +1590,23 @@ dependencies = [
 ]
 
 [[package]]
+name = "keyvalues-parser"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7e4c8354918309196302015ac9cae43362f1a13d0d5c5539a33b4c2fd2cd6d25"
+dependencies = [
+ "pest",
+ "pest_derive",
+ "thiserror",
+]
+
+[[package]]
 name = "keyvalues-serde"
 version = "0.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "da419ac133bb3ddf0dbf9c12fcc0ce01d994fcb65f6f1713faf15cc689320b5f"
 dependencies = [
- "keyvalues-parser",
+ "keyvalues-parser 0.1.0",
  "once_cell",
  "paste",
  "regex",
@@ -2011,16 +2016,6 @@ dependencies = [
  "redox_syscall 0.4.1",
  "smallvec",
  "windows-targets 0.48.5",
-]
-
-[[package]]
-name = "parser"
-version = "0.1.0"
-dependencies = [
- "collapse",
- "keyvalues-serde",
- "serde",
- "thiserror",
 ]
 
 [[package]]
@@ -2545,11 +2540,11 @@ checksum = "a2eb9349b6444b326872e140eb1cf5e7c522154d69e7a0ffb0fb81c06b37543f"
 name = "steam-launch-option-manager"
 version = "0.1.0"
 dependencies = [
- "config_file_reader",
  "eframe",
+ "keyvalues-parser 0.2.0",
  "keyvalues-serde",
- "parser",
  "serde",
+ "thiserror",
 ]
 
 [[package]]
