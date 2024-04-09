@@ -11,6 +11,8 @@ serde = { version = "1.0.0", features = ["derive"] }
 eframe = { version = "0.27.2", features = [ "default", "__screenshot" ] }
 thiserror = "1.0"
 keyvalues-parser = "0.2.0"
+anyhow = "1.0.81"
+steamlocate = "1.2.1"
 
 [workspace]
 members = [

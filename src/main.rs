@@ -1,24 +1,28 @@
 pub mod traits;
 
-mod vdf_parser;
+mod apps;
+mod domain;
+mod infra;
+mod services;
 
-use std::collections::HashMap;
 use std::path::Path;
 
 use eframe::egui;
-struct GameConfig {
+use traits::parser::Parser;
+
+pub struct GameConfig {
     name: String,
     launch_options: String,
     runner: String,
 }
 
 fn main() -> Result<(), eframe::Error> {
-    let mut games_hash_map: HashMap<String, GameConfig> = HashMap::new();
-
     let options = eframe::NativeOptions {
         viewport: egui::ViewportBuilder::default().with_inner_size([320.0, 240.0]),
         ..Default::default()
     };
+
+    let mut game_runners = apps::get_game_launch_configs::execute().unwrap();
 
     eframe::run_simple_native(
         "Slom (Steam Launch Option Manager)",
@@ -28,7 +32,7 @@ fn main() -> Result<(), eframe::Error> {
                 ui.heading("Games List");
 
                 egui::ScrollArea::vertical().show(ui, |ui| {
-                    for (game, config) in games_hash_map.iter_mut() {
+                    for (game, config) in game_runners.iter_mut() {
                         ui.horizontal(|ui| {
                             ui.label(game);
                             ui.text_edit_singleline(&mut config.runner);

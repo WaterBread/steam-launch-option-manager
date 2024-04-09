@@ -5,6 +5,8 @@ use crate::GameConfig;
 
 #[derive(Error, Debug)]
 pub enum ParseError {
+    #[error("Read error: {0}")]
+    Read(String),
     #[error("Deserialization error: {0}")]
     Deserialize(String),
     #[error("Serialization error: {0}")]

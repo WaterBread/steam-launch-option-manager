@@ -3,18 +3,33 @@ use std::collections::HashMap;
 use keyvalues_parser::{Obj, Vdf};
 
 use crate::{
-    traits::parser::{ParseError, Parser},
+    traits::{
+        config_reader::ConfigReader,
+        parser::{ParseError, Parser},
+    },
     GameConfig,
 };
 
-struct VdfParser<'a> {
+pub struct VdfParser<'a> {
+    _vdf_string: String,
     vdf: keyvalues_parser::Vdf<'a>,
 }
 
-impl VdfParser<'_> {
-    fn new(vdf_string: &str) -> Option<VdfParser<'_>> {
-        let vdf = Vdf::parse(vdf_string).ok()?;
-        Some(VdfParser { vdf })
+impl<'a> VdfParser<'a> {
+    pub fn new(reader: &dyn ConfigReader) -> Result<VdfParser<'a>, ParseError> {
+        let vdf_string = reader
+            .read_config()
+            .map_err(|e| ParseError::Read(e.to_string()))?;
+
+        let vdf_string_static: &'a str = unsafe { std::mem::transmute(&vdf_string[..]) };
+
+        let vdf =
+            Vdf::parse(&vdf_string_static).map_err(|e| ParseError::Deserialize(e.to_string()))?;
+
+        Ok(VdfParser {
+            _vdf_string: vdf_string,
+            vdf,
+        })
     }
 }
 
@@ -115,7 +130,23 @@ impl Parser for VdfParser<'_> {
 // Tests
 #[cfg(test)]
 mod tests {
+    use crate::traits::config_reader::ConfigError;
+
     use super::*;
+
+    struct InMemoryConfigReader<'a> {
+        config: &'a str,
+    }
+
+    impl<'a> ConfigReader for InMemoryConfigReader<'a> {
+        fn read_config(&self) -> Result<String, ConfigError> {
+            Ok(self.config.to_string())
+        }
+
+        fn write_config(&self, _content: String) -> Result<(), ConfigError> {
+            Ok(())
+        }
+    }
 
     #[test]
     fn test_get_game_runners() {
@@ -161,7 +192,7 @@ mod tests {
         }
         "#;
 
-        let parser = VdfParser::new(vdf).unwrap();
+        let parser = VdfParser::new(&InMemoryConfigReader { config: vdf }).unwrap();
         let game_runners = parser.get_game_runners().unwrap();
 
         assert_eq!(game_runners.len(), 3);
@@ -201,7 +232,7 @@ mod tests {
         }
         "#;
 
-        let mut parser = VdfParser::new(vdf).unwrap();
+        let mut parser = VdfParser::new(&InMemoryConfigReader { config: vdf }).unwrap();
         let mut game_runners = parser.get_game_runners().unwrap();
 
         game_runners.insert(
