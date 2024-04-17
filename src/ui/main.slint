@@ -1,0 +1,73 @@
+import { StandardTableView, GroupBox, CheckBox, HorizontalBox, VerticalBox, LineEdit, TextEdit, Button, ListView } from "std-widgets.slint";
+    export struct Value { name: string}
+    
+    export component MainWindow inherits Window {
+
+    in-out property <[Value]> values;
+
+    in property <[Value]> runners;
+
+    callback save([Value]);
+    VerticalBox {
+        padding: 5px;
+
+        HorizontalLayout {
+            padding: 5px;
+            spacing: 5px;
+            t1 := Text {
+                width: 25%;
+                overflow: elide;
+                text: "Device";
+            }
+
+            t2 := Text {
+                width: 25%;
+                overflow: elide;
+                text: "Mount Point";
+            }
+
+            t3 := Text {
+                width: 20px;
+                text: "Total";
+            }
+
+            t4 := Text {
+                width: t3.width;
+                text: "Free";
+            }
+
+            t5 := Text {
+                horizontal-stretch: 1;
+                text: "Usage";
+            }
+        }
+
+        ListView {
+            for value in root.runners: HorizontalLayout {
+                padding: 5px;
+                spacing: 5px;
+                Text {
+                    width: t1.width;
+                    overflow: elide;
+                    text: value.name;
+                }
+
+                Text {
+                    width: t2.width;
+                    overflow: elide;
+                    text: value.name;
+                }
+
+                Text {
+                    width: t3.width;
+                    text: value.name;
+                }
+
+                Text {
+                    width: t4.width;
+                    text: value.name;
+                }
+            }
+        }
+    }
+}

@@ -114,16 +114,16 @@ impl Parser for VdfParser<'_> {
 
     fn set_game_runners(
         &mut self,
-        runners: HashMap<String, GameConfig>,
-    ) -> Result<&str, ParseError> {
+        runners: &HashMap<String, GameConfig>,
+    ) -> Result<String, ParseError> {
         for (app_id, game_config) in runners {
             let attr = bogged_3(&mut self.vdf, &app_id)
                 .ok_or(ParseError::Deserialize("Error".to_string()))?;
 
-            *attr = game_config.runner;
+            *attr = game_config.runner.clone();
         }
 
-        Ok("Success")
+        return Ok(self.vdf.to_string());
     }
 }
 
@@ -244,7 +244,7 @@ mod tests {
             },
         );
 
-        parser.set_game_runners(game_runners).unwrap();
+        parser.set_game_runners(&game_runners).unwrap();
 
         let game_runners = parser.get_game_runners().unwrap();
 

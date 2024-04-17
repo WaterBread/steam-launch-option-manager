@@ -1,58 +1,26 @@
-pub mod traits;
+use slint::VecModel;
 
-mod apps;
-mod domain;
-mod infra;
-mod services;
+slint::include_modules!();
 
-use std::path::Path;
+fn main() {
+    let ui: MainWindow = MainWindow::new().unwrap();
 
-use eframe::egui;
-use traits::parser::Parser;
+    let mut runners = Vec::<Value>::new();
 
-pub struct GameConfig {
-    name: String,
-    launch_options: String,
-    runner: String,
-}
+    runners.push(Value {
+        name: "yooo".into()
+    });
 
-fn main() -> Result<(), eframe::Error> {
-    let options = eframe::NativeOptions {
-        viewport: egui::ViewportBuilder::default().with_inner_size([320.0, 240.0]),
-        ..Default::default()
-    };
+    let model = slint::ModelRc::new(VecModel::from(runners));
 
-    let mut game_runners = apps::get_game_launch_configs::execute().unwrap();
+    ui.set_runners(
+        model
+    );
 
-    eframe::run_simple_native(
-        "Slom (Steam Launch Option Manager)",
-        options,
-        move |ctx, _frame| {
-            egui::CentralPanel::default().show(ctx, |ui| {
-                ui.heading("Games List");
-
-                egui::ScrollArea::vertical().show(ui, |ui| {
-                    for (game, config) in game_runners.iter_mut() {
-                        ui.horizontal(|ui| {
-                            ui.label(game);
-                            ui.text_edit_singleline(&mut config.runner);
-                        });
-                    }
-                });
-
-                // ui.horizontal(|ui| {
-                //     if ui.button("Save").clicked() {
-                //         for (game, config) in games_hash_map.iter() {
-                //             parser::set_game_runner(game, config.runner.clone(), &mut vdf);
-                //         }
-
-                //         config_file_reader::save_config_file(
-                //             Path::new("./test.vdf"),
-                //             String::from(&vdf.to_string()),
-                //         );
-                //     }
-                // });
-            });
-        },
-    )
+    ui.on_save(|values| {
+        println!("Values: {:?}", values);
+        std::process::exit(0);
+    });
+    
+    ui.run().unwrap();
 }

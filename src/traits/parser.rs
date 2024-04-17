@@ -17,6 +17,6 @@ pub trait Parser {
     fn get_game_runners(&self) -> Result<HashMap<String, GameConfig>, ParseError>;
     fn set_game_runners(
         &mut self,
-        runners: HashMap<String, GameConfig>,
-    ) -> Result<&str, ParseError>;
+        runners: &HashMap<String, GameConfig>,
+    ) -> Result<String, ParseError>;
 }
